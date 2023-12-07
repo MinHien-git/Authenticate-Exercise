@@ -42,6 +42,10 @@ controller.register = async (req, res) => {
       });
     }
   }
+  return res.render("auth-login", {
+    layout: "auth",
+    message: "Can not register new account!",
+  });
 };
 controller.login = async (req, res) => {
   let { username, password, rememberMe } = req.body;
@@ -85,6 +89,10 @@ controller.login = async (req, res) => {
       });
     }
   }
+  res.render("auth-login", {
+    layout: "auth",
+    message: "Invalid username or password!",
+  });
 };
 
 controller.isLoggedIn = async (req, res, next) => {
